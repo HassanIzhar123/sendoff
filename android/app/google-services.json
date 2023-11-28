@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "890701146552",
+    "project_id": "sendoff-app",
+    "storage_bucket": "sendoff-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890701146552:android:b9c9149350419a80b7074d",
+        "android_client_info": {
+          "package_name": "com.webrange.sendoff.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890701146552-kopc1805m2e1gefqthrr09n5brej61m6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMXT3WD4hAgGT7KwPwfNSuyiSqm2kYn6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890701146552-kopc1805m2e1gefqthrr09n5brej61m6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

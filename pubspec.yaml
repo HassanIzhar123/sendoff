@@ -1,0 +1,67 @@
+name: sendoff
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^2.16.0
+  flutter_bloc: ^8.1.1
+  equatable: ^2.0.5
+  cupertino_icons: ^1.0.2
+  provider: ^6.0.5
+  flutter_rating_bar: ^4.0.1
+  cloud_firestore: ^4.9.1
+  fluttertoast: ^8.2.2
+  cached_network_image: ^3.2.3
+  shared_preferences: ^2.2.1
+  firebase_auth: ^4.10.0
+  flutter_stripe: ^5.0.0
+  flutter_dotenv: ^5.0.2
+  intl: ^0.18.1
+  scrollable_positioned_list: ^0.3.8
+  google_sign_in: ^6.1.5
+  url_launcher: ^6.1.14
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  carousel_slider: ^4.2.1
+  change_app_package_name: ^1.1.0
+  flutter_svg: ^2.0.9
+  firebase_messaging: ^14.7.5
+  firebase_analytics: ^10.7.1
+  flutter_local_notifications: ^16.2.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.6
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/.env
+
+  fonts:
+    - family: NunitoSans
+      fonts:
+        - asset: assets/fonts/NunitoSans-Condensed-Regular.ttf
+        - asset: assets/fonts/NunitoSans-Condensed-SemiBold.ttf
+        - asset: assets/fonts/NunitoSans-Condensed-Bold.ttf
+        - asset: assets/fonts/NunitoSans-Expanded-Regular.ttf
+        - asset: assets/fonts/NunitoSans-Expanded-SemiBold.ttf
+        - asset: assets/fonts/NunitoSans-Expanded-Bold.ttf
+
