@@ -156,10 +156,7 @@ class _ChatScreenState extends State<ChatScreen>
                     break;
                 }
               }
-              // var distinctIds = chatMessages.toSet().toList();
-              // chatMessages.addAll(distinctIds);
               chatMessages.sort((a, b) => b.timestamp.compareTo(a.timestamp));
-              log("chatMessagtes: ${chatMessages.toString()}");
               setState(() {});
             });
           } else if (state is ChatsFailedState) {

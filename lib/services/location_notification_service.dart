@@ -11,6 +11,7 @@ class LocalNotificationService {
         InitializationSettings(
       android: AndroidInitializationSettings("@mipmap/ic_launcher"),
       iOS: DarwinInitializationSettings(
+        requestBadgePermission: false,
         requestAlertPermission: true,
         requestSoundPermission: true,
         requestProvisionalPermission: true,

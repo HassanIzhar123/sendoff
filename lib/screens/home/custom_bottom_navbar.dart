@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sendoff/bloc/cubit/chats/chats_state.dart';
 import 'package:sendoff/helper/MySharedPreferences.dart';
 import 'package:sendoff/screens/cart/checkout.dart';
@@ -133,11 +131,37 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar>
             ),
           ],
         ),
+        // bottomNavigationBar: BottomAppBar(
+        //   color: Colors.yellow[100],
+        //   shape: const CircularNotchedRectangle(),
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //     children: [
+        //       IconButton(
+        //         onPressed: () {},
+        //         icon: const Icon(Icons.shopping_bag),
+        //       ),
+        //       IconButton(
+        //         onPressed: () {},
+        //         icon: const Icon(Icons.money),
+        //       ),
+        //       IconButton(
+        //         onPressed: () {},
+        //         icon: const Icon(Icons.currency_bitcoin),
+        //       ),
+        //       IconButton(
+        //         onPressed: () {},
+        //         icon: const Icon(Icons.bar_chart),
+        //       ),
+        //     ],
+        //   ),
+        // ),
         bottomNavigationBar: SizedBox(
-          height: kToolbarHeight,
+          height: kToolbarHeight + 35,
           child: BottomNavigationBar(
             elevation: 0,
             type: BottomNavigationBarType.fixed,
+            selectedFontSize: 0,
             selectedIconTheme: const IconThemeData(color: Pallete.primary),
             currentIndex: _selectedIndex,
             // iconSize: 20,
@@ -150,16 +174,13 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar>
             items: [
               BottomNavigationBarItem(
                 label: "",
-                icon: Center(
-                  child: Container(
-                    height: 25,
-                    child: Image.asset(
-                      CustomAssets.list,
-                      // height: 25,
-                      color: _selectedIndex == 0
-                          ? Pallete.primary
-                          : Pallete.bottomNavDisabledColor,
-                    ),
+                icon: SizedBox(
+                  height: 25,
+                  child: Image.asset(
+                    CustomAssets.list,
+                    color: _selectedIndex == 0
+                        ? Pallete.primary
+                        : Pallete.bottomNavDisabledColor,
                   ),
                 ),
               ),
