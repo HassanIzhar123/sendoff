@@ -33,8 +33,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductsCubit(ProductsRepository())
-        ..fetchCategoriesData(widget.categoryId),
+      create: (context) => ProductsCubit(ProductsRepository())..fetchCategoriesData(widget.categoryId),
       child: BlocConsumer<ProductsCubit, ProductsState>(
         listener: (context, state) {
           if (state is ProductsSuccessState) {
@@ -90,15 +89,12 @@ class _CategoryProductsState extends State<CategoryProducts> {
                               setState(() {
                                 filter = !filter;
                                 if (product != null) {
-                                  showPriceRangeBottomSheet(
-                                      context, 0.0, product!.price.toDouble());
+                                  showPriceRangeBottomSheet(context, 0.0, product!.price.toDouble());
                                 }
                               });
                             },
                             child: Image.asset(
-                              filter
-                                  ? CustomAssets.filterFilled
-                                  : CustomAssets.filter,
+                              filter ? CustomAssets.filterFilled : CustomAssets.filter,
                               height: 24.0,
                             ),
                           ),
@@ -116,10 +112,8 @@ class _CategoryProductsState extends State<CategoryProducts> {
                                       : []
                                   : [];
                               if (list.isNotEmpty) {
-                                product = list.reduce((currentMax, obj) =>
-                                    obj.price > currentMax.price
-                                        ? obj
-                                        : currentMax);
+                                product =
+                                    list.reduce((currentMax, obj) => obj.price > currentMax.price ? obj : currentMax);
                               }
                               return filteredList.isNotEmpty
                                   ? filteredList.isEmpty
@@ -134,22 +128,18 @@ class _CategoryProductsState extends State<CategoryProducts> {
                                           itemBuilder: (context, index) {
                                             var item = filteredList[index];
                                             return CatProduct(
-                                              image: item.images.isNotEmpty
-                                                  ? item.images[0]
-                                                  : "",
+                                              image: item.images.isNotEmpty ? item.images[0] : "",
                                               label: item.name,
                                               desc: item.description,
                                               averageRating: item.averageRating,
-                                              price:
-                                                  "R${item.price.toStringAsFixed(2)}",
+                                              price: "R${item.price.toStringAsFixed(2)}",
                                               onPressed: () async {
                                                 screenPush(
                                                   context,
                                                   ProductDetails(
                                                     products: data,
                                                     currentProduct: item,
-                                                    isArticle:
-                                                        item.isArticleProduct,
+                                                    isArticle: item.isArticleProduct,
                                                   ),
                                                 );
                                               },
@@ -165,41 +155,32 @@ class _CategoryProductsState extends State<CategoryProducts> {
                                               SizedBox(
                                                 height: 30.0,
                                               ),
-                                              Text(
-                                                  "No Products Available for this Category!"),
+                                              Text("No Products Available for this Category!"),
                                             ],
                                           ),
                                         )
                                       : ListView(
-                                          physics:
-                                              const BouncingScrollPhysics(),
+                                          physics: const BouncingScrollPhysics(),
                                           shrinkWrap: true,
                                           children: data
                                               .asMap()
                                               .map((index, i) {
-                                                final Product item =
-                                                    data[index];
+                                                final Product item = data[index];
                                                 return MapEntry(
                                                   index,
                                                   CatProduct(
-                                                    image:
-                                                        item.images.isNotEmpty
-                                                            ? item.images[0]
-                                                            : "",
+                                                    image: item.images.isNotEmpty ? item.images[0] : "",
                                                     label: item.name,
                                                     desc: item.description,
-                                                    averageRating:
-                                                        item.averageRating,
-                                                    price:
-                                                        "R${item.price.toStringAsFixed(2).toString()}",
+                                                    averageRating: item.averageRating,
+                                                    price: "R${item.price.toStringAsFixed(2).toString()}",
                                                     onPressed: () {
                                                       screenPush(
                                                         context,
                                                         ProductDetails(
                                                           products: data,
                                                           currentProduct: item,
-                                                          isArticle: item
-                                                              .isArticleProduct,
+                                                          isArticle: item.isArticleProduct,
                                                         ),
                                                       );
                                                     },
@@ -235,8 +216,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
     );
   }
 
-  void showPriceRangeBottomSheet(
-      BuildContext context, double startingPrice, double lastPrice) {
+  void showPriceRangeBottomSheet(BuildContext context, double startingPrice, double lastPrice) {
     RangeValues priceRange = RangeValues(startingPrice, lastPrice);
     showModalBottomSheet(
       enableDrag: true,
@@ -309,12 +289,8 @@ class _PriceRangeBottomSheetState extends State<PriceRangeBottomSheet> {
     _currentRange = widget.priceRange;
   }
 
-  List<Product> filterProductsByPriceRange(
-      List<Product> products, double minPrice, double maxPrice) {
-    return products
-        .where(
-            (product) => product.price >= minPrice && product.price <= maxPrice)
-        .toList();
+  List<Product> filterProductsByPriceRange(List<Product> products, double minPrice, double maxPrice) {
+    return products.where((product) => product.price >= minPrice && product.price <= maxPrice).toList();
   }
 
   @override
@@ -379,8 +355,7 @@ class _PriceRangeBottomSheetState extends State<PriceRangeBottomSheet> {
                       fontWeight: FontWeight.w500,
                       fontFamily: "NunitoSans",
                     ),
-                    rangeValueIndicatorShape:
-                        const PaddleRangeSliderValueIndicatorShape()),
+                    rangeValueIndicatorShape: const PaddleRangeSliderValueIndicatorShape()),
                 child: RangeSlider(
                   values: _currentRange,
                   activeColor: Pallete.primary,
@@ -436,8 +411,8 @@ class _PriceRangeBottomSheetState extends State<PriceRangeBottomSheet> {
                     borderRadius: 30.0,
                     height: MediaQuery.of(context).size.height * .058,
                     onPressed: () {
-                      List<Product> productsList = filterProductsByPriceRange(
-                          widget.list, _currentRange.start, _currentRange.end);
+                      List<Product> productsList =
+                          filterProductsByPriceRange(widget.list, _currentRange.start, _currentRange.end);
                       widget.onFilteredApply(productsList);
                       Navigator.pop(context);
                     },
@@ -503,8 +478,7 @@ class CustomRangeThumbShape extends RangeSliderThumbShape {
     final Path thumbPath = Path();
     thumbPath.addOval(Rect.fromCircle(center: center, radius: 13.0));
 
-    canvas.drawShadow(
-        thumbPath, Pallete.shadowColor.withOpacity(0.2), 5.0, true);
+    canvas.drawShadow(thumbPath, Pallete.shadowColor.withOpacity(0.2), 5.0, true);
 
     canvas.drawCircle(
       center,

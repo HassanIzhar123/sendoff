@@ -56,7 +56,15 @@ class ProductsRepository extends BaseRepository {
         product.ratingReviews = reviews;
         products.add(product);
       }
-      products.sort((a, b) => b.averageRating.compareTo(a.averageRating));
+      // products.sort((a, b) => b.averageRating.compareTo(a.averageRating));
+      products.sort((a, b) {
+        int ratingComparison = b.averageRating.compareTo(a.averageRating);
+        if (ratingComparison != 0) {
+          return ratingComparison;
+        } else {
+          return a.price.compareTo(b.price);
+        }
+      });
       return products;
     } catch (e) {
       log(e.toString());

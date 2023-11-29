@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/PushOrder/OrderProduct.dart';
 import '../../models/cart/push_order_model.dart';
@@ -58,7 +59,9 @@ class ChatsRepository extends BaseRepository {
         return Admin.fromFireStore(doc.data() as Map<String, dynamic>, doc.id);
       }).toList()[0];
     } catch (e) {
-      print('Error getting admin data from Firestore: $e');
+      if (kDebugMode) {
+        print('Error getting admin data from Firestore: $e');
+      }
       return null;
     }
   }

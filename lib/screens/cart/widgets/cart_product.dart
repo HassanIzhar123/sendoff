@@ -224,23 +224,33 @@ class CartProduct extends StatelessWidget {
                           child: SizedBox(
                             // height: MediaQuery.of(context).size.height * 0.105,
                             height: MediaQuery.of(context).size.height * 0.07,
-                            child: currentProduct.images[0] != ""
-                                ? CachedNetworkImage(
-                                    imageUrl: currentProduct.images[0],
-                                    placeholder: (context, url) => const Center(
-                                      child: CircularProgressIndicator(),
-                                    ),
-                                    imageBuilder: (context, imageProvider) => Container(
-                                      width: MediaQuery.of(context).size.width * .17,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20.0),
-                                        image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
-                                      ),
-                                    ),
-                                    errorWidget: (context, url, error) => const Center(child: Icon(Icons.error)),
-                                    fit: BoxFit.cover,
-                                  )
-                                : const SizedBox(width: 85.0, child: Icon(Icons.error)),
+                            child: currentProduct.images.isNotEmpty
+                                ? currentProduct.images[0] != ""
+                                    ? CachedNetworkImage(
+                                        imageUrl: currentProduct.images[0],
+                                        placeholder: (context, url) => const Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                        imageBuilder: (context, imageProvider) => Container(
+                                          width: MediaQuery.of(context).size.width * .17,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(20.0),
+                                            image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+                                          ),
+                                        ),
+                                        errorWidget: (context, url, error) => const Center(
+                                          child: Icon(Icons.error),
+                                        ),
+                                        fit: BoxFit.cover,
+                                      )
+                                    : const SizedBox(
+                                        width: 85.0,
+                                        child: Icon(Icons.error),
+                                      )
+                                : const SizedBox(
+                                    width: 85.0,
+                                    child: Icon(Icons.error),
+                                  ),
                           ),
                         ),
                       ),

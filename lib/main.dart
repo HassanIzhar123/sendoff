@@ -48,7 +48,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     LocalNotificationService.initialize();
     FirebaseMessaging.onMessage.listen((event) {
-      log("notiofcated triggered");
       if (event.notification != null) {
         LocalNotificationService.display(event);
       }
