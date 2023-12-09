@@ -10,6 +10,7 @@ class Assets {
   static const String fontsNunitoSansExpandedBold = 'assets/fonts/NunitoSans-Expanded-Bold.ttf';
   static const String fontsNunitoSansExpandedRegular = 'assets/fonts/NunitoSans-Expanded-Regular.ttf';
   static const String fontsNunitoSansExpandedSemiBold = 'assets/fonts/NunitoSans-Expanded-SemiBold.ttf';
+  static const String iconsAppIcon = 'assets/icons/app_icon.png';
   static const String iconsArrowleft = 'assets/icons/arrowleft.png';
   static const String iconsArrowright = 'assets/icons/arrowright.png';
   static const String iconsArrowup = 'assets/icons/arrowup.png';
