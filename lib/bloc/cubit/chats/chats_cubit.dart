@@ -13,13 +13,15 @@ class ChatsCubit extends Cubit<ChatsState> {
 
   final _fireStoreService = ChatsRepository();
 
-  Future getChatMessages(int messagesPerPage, DocumentSnapshot? lastDocument) async {
+  Future getChatMessages(
+      int messagesPerPage, DocumentSnapshot? lastDocument) async {
     emit(ChatsLoadingState());
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? customerId = prefs.getString("customerId");
     if (customerId != null) {
       Stream<QuerySnapshot<Map<String, dynamic>>> stream =
-          await _fireStoreService.getChats(customerId, messagesPerPage, lastDocument);
+          await _fireStoreService.getChats(
+              customerId, messagesPerPage, lastDocument);
       emit(ChatsSuccessState(stream));
     } else {
       emit(const ChatsFailedState("customer is not signed In"));
@@ -32,14 +34,21 @@ class ChatsCubit extends Cubit<ChatsState> {
       String? customerId = prefs.getString("customerId");
       emit(ChatsSendMessageLoadingState());
       if (customerId != null) {
-        Chat chat =
-            Chat(displayName: "", text: text, timestamp: timeStamp, uid: customerId, messageId: '', read: false);
-        PushOrderModel? pushOrderModel = await _fireStoreService.sendMessage(customerId, chat);
+        Chat chat = Chat(
+            displayName: "",
+            text: text,
+            timestamp: timeStamp,
+            uid: customerId,
+            messageId: '',
+            read: false);
+        PushOrderModel? pushOrderModel =
+            await _fireStoreService.sendMessage(customerId, chat);
         if (pushOrderModel != null) {
           if (!pushOrderModel.isError) {
             emit(ChatsSendMessageSuccessState(pushOrderModel));
           } else {
-            emit(ChatsSendMessageFailedState(pushOrderModel.errorMessage ?? ""));
+            emit(
+                ChatsSendMessageFailedState(pushOrderModel.errorMessage ?? ""));
           }
         } else {
           emit(ChatsSendMessageFailedState(pushOrderModel.errorMessage ?? ""));
@@ -62,7 +71,8 @@ class ChatsCubit extends Cubit<ChatsState> {
   void fetchOrderCount() async {
     emit(ChatsOrderCountLoadingState());
     //log"fetchOrderCount");
-    List<order_number.Order> orderList = await _fireStoreService.getRunningOrderCount();
+    List<order_number.Order> orderList =
+        await _fireStoreService.getRunningOrderCount();
     //log"fetchOrderCount1");
     emit(ChatsOrderCountSuccessState(orderList));
   }
